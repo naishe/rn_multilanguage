@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {Text, View} from 'react-native';
 import {useTranslation} from 'react-i18next';
 
 const Welcome = () => {
@@ -13,5 +13,3 @@ const Welcome = () => {
 };
 
 export default Welcome;
-
-const styles = StyleSheet.create({});

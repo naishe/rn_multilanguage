@@ -10,9 +10,11 @@ The second part is here: {{url}}
 
 ## HOW TO RUN THIS CODE
 
-1. Have a emulator running
+1. Have an emulator running
 2. `git clone https://github.com/naishe/rn_multilanguage.git`
-3. `cd rn_multilanguage`
-4. `npm install`
-5. `npx react-native run-android` if running Android emulator  
-   `npx react-native run-ios` if running iOS emulator
+3. To switch to first part of the tutorial, run `git checkout part_1`  
+   To switch to the second part of the tutorial, run `git checkout part_2`
+4. `cd rn_multilanguage`
+5. `npm install`
+6. To deploy on Android emulator, run `npx react-native run-android`  
+   To deploy on iOS emulator, run `npx react-native run-ios`

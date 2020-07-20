@@ -2,7 +2,6 @@ import React from 'react';
 import {SafeAreaView, StyleSheet, View, Text, StatusBar} from 'react-native';
 import './localization';
 import {useTranslation} from 'react-i18next';
-// import LanguageSelector from './LanguageSelector';
 
 declare const global: {HermesInternal: null | {}};
 
@@ -15,7 +14,6 @@ const App = () => {
       <SafeAreaView style={styles.main}>
         <View>
           <Text>{t('Welcome to React')}</Text>
-          {/* <LanguageSelector /> */}
         </View>
       </SafeAreaView>
     </>

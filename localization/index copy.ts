@@ -29,10 +29,8 @@ const languageDetector: LanguageDetectorAsyncModule = {
     /* use services and options */
   },
   detect: (callback: (lng: string) => void) => {
-    console.log('>>>>>>> Detect is called');
     AsyncStorage.getItem('APP_LANG', (err, lng) => {
-      console.log('*** >> ', err, lng);
-      // Case 1: Error fetching stored data
+      //Handle error fetching stored data or no data found
       if (err || !lng) {
         if (err) {
           console.log('Error fetching "APP_LANG" from async store', err);
@@ -52,16 +50,13 @@ const languageDetector: LanguageDetectorAsyncModule = {
     });
   },
   cacheUserLanguage: (lng: string) => {
-    console.log('****** Cache user language is called: ' + lng);
-    AsyncStorage.removeItem('APP_LANG');
-    // AsyncStorage.setItem("APP_LANG", lng);
-    console.log('****** Cache user language is called: ' + lng);
+    AsyncStorage.setItem('APP_LANG', lng);
   },
 };
 
 i18n
   .use(languageDetector)
-  .use(initReactI18next) // passes i18n down to react-i18next
+  .use(initReactI18next)
   .init({
     resources: AVAILABLE_LANGUAGES,
     react: {
@@ -69,25 +64,6 @@ i18n
     },
     interpolation: {
       escapeValue: false,
-      format: function (value: any, format?: string, lng?: string) {
-        switch (format) {
-          case 'flags':
-            if (
-              typeof value !== 'number' ||
-              value < 1 ||
-              !Number.isInteger(value)
-            ) {
-              return value;
-            }
-            if (lng === 'hi') {
-              return [...Array(value as number)].map((_) => '🇮🇳').join(' ');
-            } else {
-              return [...Array(value as number)].map((_) => '🌎').join(' ');
-            }
-          default:
-            return value;
-        }
-      },
     },
     defaultNS: 'common',
   });

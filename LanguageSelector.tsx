@@ -16,11 +16,14 @@ const LANGS = [
 ];
 
 const LanguageSelector = () => {
-  const {i18n} = useTranslation();
+  const {t, i18n} = useTranslation();
   const selectedLngCode = i18n.language;
   const setLng = (lngCode: string) => i18n.changeLanguage(lngCode);
   return (
     <View style={styles.container}>
+      <View style={styles.titleContainer}>
+        <Text style={styles.select}>{t('languageSelector:selectLng')}</Text>
+      </View>
       {LANGS.map((l) => {
         const selected = l.lngCode === selectedLngCode;
         return (
@@ -45,7 +48,16 @@ export default LanguageSelector;
 
 const styles = StyleSheet.create({
   container: {
+    padding: 10,
+    backgroundColor: 'rgb(231, 232, 235)',
     width: width * 0.8,
+  },
+  titleContainer: {
+    alignItems: 'center',
+    paddingBottom: 20,
+  },
+  select: {
+    fontSize: 20,
   },
   row: {
     flexDirection: 'row',

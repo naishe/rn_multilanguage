@@ -1,9 +1,10 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet, View, Text, StatusBar} from 'react-native';
+import {SafeAreaView, StyleSheet, Text, StatusBar} from 'react-native';
 import './localization';
 import {useTranslation} from 'react-i18next';
 import LanguageSelector from './LanguageSelector';
 import Section from './Section';
+import moment from 'moment';
 
 declare const global: {HermesInternal: null | {}};
 
@@ -35,6 +36,10 @@ const App = () => {
         </Section>
         <Section title="CUSTOM FORMAT">
           <Text>{t('flagsCount', {count: 3})}</Text>
+          <Text>
+            Moment.js Locale 42 minutes ago:
+            {moment().subtract(42, 'minutes').fromNow()}
+          </Text>
         </Section>
       </SafeAreaView>
     </>

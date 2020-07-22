@@ -6,6 +6,8 @@ import i18n, {
 import {initReactI18next} from 'react-i18next';
 import AsyncStorage from '@react-native-community/async-storage';
 import * as RNLocalize from 'react-native-localize';
+import 'moment/min/locales';
+import moment from 'moment';
 import en from './en';
 import hi from './hi';
 
@@ -91,3 +93,7 @@ i18n
     },
     defaultNS: 'common',
   });
+
+i18n.on('languageChanged', (lng: string) => {
+  moment.locale(lng);
+});

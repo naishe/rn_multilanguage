@@ -12,6 +12,7 @@
   "dependencies": {
     "@react-native-community/async-storage": "^1.11.0",
     "i18next": "^19.6.2",
+    "moment": "^2.27.0",
     "react": "16.13.1",
     "react-i18next": "^11.7.0",
     "react-native": "0.63.0",

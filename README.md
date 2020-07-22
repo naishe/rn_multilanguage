@@ -4,10 +4,16 @@ A Tutorial repo on how to build multi language support in react native using i18
 
 ## TUTORIAL
 
-There is a three part tutorial available at Medium  
-The first part is here: https://medium.com/cybermonkey/multiple-language-support-in-react-native-part-1-fa6966b62332  
-The second part is here: https://medium.com/cybermonkey/mastering-multiple-language-support-in-react-native-part-2-d33262acc21d
-The third part is here: https://medium.com/cybermonkey/mastering-multiple-language-support-in-react-native-part-3-d8091339c767
+There is a three part tutorial available at Medium
+
+**PART 1: Basics**  
+https://medium.com/cybermonkey/multiple-language-support-in-react-native-part-1-fa6966b62332
+
+**PART 2: File Organization & Language Options**  
+https://medium.com/cybermonkey/mastering-multiple-language-support-in-react-native-part-2-d33262acc21d
+
+**PART 3: Advanced Usage**  
+https://medium.com/cybermonkey/mastering-multiple-language-support-in-react-native-part-3-d8091339c767
 
 ## HOW TO RUN THIS CODE
 

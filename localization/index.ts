@@ -6,8 +6,6 @@ import i18n, {
 import {initReactI18next} from 'react-i18next';
 import AsyncStorage from '@react-native-community/async-storage';
 import * as RNLocalize from 'react-native-localize';
-import 'moment/min/locales';
-import moment from 'moment';
 import en from './en';
 import hi from './hi';
 
@@ -31,9 +29,7 @@ const languageDetector: LanguageDetectorAsyncModule = {
     /* use services and options */
   },
   detect: (callback: (lng: string) => void) => {
-    console.log('>>>>>>> Detect is called');
     AsyncStorage.getItem('APP_LANG', (err, lng) => {
-      console.log('*** >> ', err, lng);
       // Case 1: Error fetching stored data
       if (err || !lng) {
         if (err) {
@@ -53,17 +49,12 @@ const languageDetector: LanguageDetectorAsyncModule = {
       callback(lng);
     });
   },
-  cacheUserLanguage: (lng: string) => {
-    console.log('****** Cache user language is called: ' + lng);
-    AsyncStorage.removeItem('APP_LANG');
-    // AsyncStorage.setItem("APP_LANG", lng);
-    console.log('****** Cache user language is called: ' + lng);
-  },
+  cacheUserLanguage: (lng: string) => AsyncStorage.setItem('APP_LANG', lng),
 };
 
 i18n
   .use(languageDetector)
-  .use(initReactI18next) // passes i18n down to react-i18next
+  .use(initReactI18next)
   .init({
     resources: AVAILABLE_LANGUAGES,
     react: {
@@ -71,29 +62,6 @@ i18n
     },
     interpolation: {
       escapeValue: false,
-      format: function (value: any, format?: string, lng?: string) {
-        switch (format) {
-          case 'flags':
-            if (
-              typeof value !== 'number' ||
-              value < 1 ||
-              !Number.isInteger(value)
-            ) {
-              return value;
-            }
-            if (lng === 'hi') {
-              return [...Array(value as number)].map((_) => '🇮🇳').join(' ');
-            } else {
-              return [...Array(value as number)].map((_) => '🌎').join(' ');
-            }
-          default:
-            return value;
-        }
-      },
     },
     defaultNS: 'common',
   });
-
-i18n.on('languageChanged', (lng: string) => {
-  moment.locale(lng);
-});
